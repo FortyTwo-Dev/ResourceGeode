@@ -29,7 +29,7 @@ public class ModConfiguredFeatures {
                             BlockStateProvider.simple(Blocks.ANVIL),
                             BlockStateProvider.simple(Blocks.DIRT),
                             BlockStateProvider.simple(Blocks.EMERALD_BLOCK),
-                            List.of(Blocks.ANVIL.defaultBlockState()),
+                            List.of(Blocks.ANVIL.defaultBlockState(), Blocks.DIAMOND_BLOCK.defaultBlockState()),
                             BlockTags.FEATURES_CANNOT_REPLACE , BlockTags.GEODE_INVALID_BLOCKS),
                             new GeodeLayerSettings(1.7D, 1.2D, 2.5D, 3.5D),
                             new GeodeCrackSettings(0.25D, 1.5D, 1), 0.5D, 0.1D,
