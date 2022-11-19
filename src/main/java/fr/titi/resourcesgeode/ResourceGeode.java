@@ -6,6 +6,7 @@ import fr.titi.resourcesgeode.world.feature.ModPlacedFeatures;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -24,8 +25,11 @@ public class ResourceGeode
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
 
-        ModConfiguredFeatures.register(modEventBus);
-        ModPlacedFeatures.register(modEventBus);
+        if (ModList.get().isLoaded("mekanism")) {
+            ModConfiguredFeatures.register(modEventBus);
+            ModPlacedFeatures.register(modEventBus);
+        }
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
