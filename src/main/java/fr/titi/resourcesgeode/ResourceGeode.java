@@ -1,6 +1,8 @@
 package fr.titi.resourcesgeode;
 
 import com.mojang.logging.LogUtils;
+import fr.titi.resourcesgeode.world.feature.ModConfiguredFeatures;
+import fr.titi.resourcesgeode.world.feature.ModPlacedFeatures;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -21,6 +23,9 @@ public class ResourceGeode
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
+
+        ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeatures.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -28,7 +33,7 @@ public class ResourceGeode
 
     }
 
-
+    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModEvents
     {
